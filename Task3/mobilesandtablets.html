@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Listing</title>
+  <link rel="stylesheet" href="mobilesandtablets.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Mobiles and Tablets</h2>
+    <div class="product-grid">
+      <!-- Product Cards -->
+      <div class="product-card">
+        <img src="product15.webp" alt="product15">
+        <button onclick="addToCart('product15', 13999, 'product15.webp')">Add to Cart</button>
+        <h3>product15</h3>
+        <p>₹13,999 <span class="strike">₹24,999</span> <span class="discount">44% off</span></p>
+      </div>
+      <div class="product-card">
+        <img src="product16.webp" alt="product16">
+        <button onclick="addToCart('product16', 13999, 'product16.webp')">Add to Cart</button>
+        <h3>product16</h3>
+        <p>₹13,999 <span class="strike">₹24,999</span> <span class="discount">44% off</span></p>
+      </div>
+      <div class="product-card">
+        <img src="product17.webp" alt="product17">
+        <button onclick="addToCart('product17', 10999, 'product17.webp')">Add to Cart</button>
+        <h3>product17</h3>
+        <p>₹10,999 <span class="strike">₹19,999</span> <span class="discount">45% off</span></p>
+      </div>
+      <div class="product-card">
+        <img src="product18.webp" alt="product18">
+        <button onclick="addToCart('product18', 21079, 'product18.webp')">Add to Cart</button>
+        <h3>product18</h3>
+        <p>₹21,079 <span class="strike">₹26,999</span> <span class="discount">21% off</span></p>
+      </div>
+      <div class="product-card">
+        <img src="product19.webp" alt="product19">
+        <button onclick="addToCart('product19', 15999, 'product19.webp')">Add to Cart</button>
+        <h3>product19</h3>
+        <p>₹15,999 <span class="strike">₹22,999</span> <span class="discount">30% off</span></p>
+      </div>
+      <div class="product-card">
+        <img src="product20.webp" alt="product20">
+        <button onclick="addToCart('product20', 9499, 'product20.webp')">Add to Cart</button>
+        <h3>product20</h3>
+        <p>₹9,499 <span class="strike">₹14,999</span> <span class="discount">37% off</span></p>
+      </div>
+      <div class="product-card">
+        <img src="product21.webp" alt="product21">
+        <button onclick="addToCart('product21', 9499, 'product21.webp')">Add to Cart</button>
+        <h3>product21</h3>
+        <p>₹9,499 <span class="strike">₹14,999</span> <span class="discount">37% off</span></p>
+      </div>
+      <div class="product-card">
+        <img src="product22.webp" alt="product22">
+        <button onclick="addToCart('product22', 9499, 'product22.webp')">Add to Cart</button>
+        <h3>product22</h3>
+        <p>₹9,499 <span class="strike">₹14,999</span> <span class="discount">37% off</span></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if item already in cart
+    const index = cart.findIndex(item => item.name === name);
+    if (index === -1) {
+      cart.push({ name, price, image });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(name + " added to cart!");
+    } else {
+      alert(name + " is already in the cart.");
+    }
+  }
+</script>
+
