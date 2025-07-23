@@ -1,48 +1,49 @@
+
 let getUsersdata = JSON.parse(localStorage.getItem("usersdata")) || [];
 
-function Signin(){
-    
-    let mobile = document.getElementById("mobile").value;
+function Signin() {
+  let mobile = document.getElementById("mobile").value.trim();
+  let password = document.getElementById("pass").value.trim();
+  let count = 0;
 
-    let password = document.getElementById("pass").value;
+  if (mobile.length !== 10) {
+    alert("Mobile number should be 10 digits");
+    return;
+  }
 
-   let count = 0;
+  if (mobile === "") {
+    alert("Enter Mobile Number");
+    return;
+  }
 
-     if(mobile.length !== 10)
-     {
-        alert("Mobile number should be of 10 digits")
-     }
-     else if(mobile.length == 0)
-     {
-        alert("Enter Mobile Number")
-     }
+  for (let i = 0; i < getUsersdata.length; i++) {
+    if (mobile === getUsersdata[i].mobile) {
+      if (password === getUsersdata[i].password) {
+        alert("Sign in Successful");
 
-     else{
+        // ✅ Store active user in localStorage
+        localStorage.setItem("activeUser", JSON.stringify(getUsersdata[i]));
 
-     
-    for(let i=0;i<getUsersdata.length;i++)
-    {
-        if(mobile == getUsersdata[i].mobile)
-        {
-            if(password == getUsersdata[i].password)
-            {
-               alert("Sign in Successful");
-               window.location.href = "index.html"
-            }
-            else{
-                alert("Invalid Password");
-            }
-        }
-        else{
-            count++;
+        // ✅ If needed, you can also create an empty cart for them if not already present
+        let fullCart = JSON.parse(localStorage.getItem("cart")) || {};
+        if (!fullCart[mobile]) {
+          fullCart[mobile] = [];
+          localStorage.setItem("cart", JSON.stringify(fullCart));
         }
 
+        window.location.href = "index.html";
+        return;
+      } else {
+        alert("Invalid Password");
+        return;
+      }
+    } else {
+      count++;
     }
-     }
-    if(count == getUsersdata.length)
-    {
-        alert("User is Not registered, Sign up to Continue")
-        window.location.href = "signup.html"
-    }
+  }
 
+  if (count === getUsersdata.length) {
+    alert("User is not registered, please sign up to continue.");
+    window.location.href = "signup.html";
+  }
 }

@@ -22,17 +22,15 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" placeholder="Search for Products, Brands and More">
         </div>
-        <a href="signin.html">
-            <div class="login hiconcss">
-                <i class="fa-regular fa-circle-user"></i>
-                <span>Login</span>
-                <i class="ldicon fa-solid fa-angle-down"></i>
-            </div>
-        </a>
+        <div class="login hiconcss" id="login-section">
+            <i class="fa-regular fa-circle-user"></i>
+            <a href="signin.html">Login</a>
+            <i class="ldicon fa-solid fa-angle-down"></i>
+        </div>
+
 
         <div class="Cart hiconcss">
             <i class="fa-solid fa-cart-plus"></i>
-            <!-- <span>Cart</span> -->
             <a href="cart.html">Cart</a>
         </div>
         <div class="seller hiconcss">
@@ -492,6 +490,53 @@
             </div>
         </div>
     </footer>
+    <script>
+        const activeUser = JSON.parse(localStorage.getItem("activeUser"));
+        const loginSection = document.getElementById("login-section");
+
+        if (activeUser) {
+            // Render dropdown
+            loginSection.innerHTML = `
+            <i class="fa-regular fa-circle-user"></i>
+            <span id="username-display">${activeUser.username.split(" ")[0]}</span>
+            <i class="ldicon fa-solid fa-angle-down"></i>
+            <div class="dropdown-menu" id="dropdown-menu" style="display: none; position: absolute;">
+                <button id="logout-btn">Logout</button>
+            </div>
+        `;
+
+            const dropdown = document.getElementById("dropdown-menu");
+
+            // Toggle dropdown
+            loginSection.addEventListener("click", function (e) {
+                e.stopPropagation();
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            });
+
+            // Handle logout directly
+            const logoutBtn = document.getElementById("logout-btn");
+            logoutBtn.addEventListener("click", function (e) {
+                e.stopPropagation(); // prevent dropdown close from interfering
+                localStorage.removeItem("activeUser");
+                window.location.href = "signin.html";
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener("click", function (e) {
+                if (!loginSection.contains(e.target)) {
+                    dropdown.style.display = "none";
+                }
+            });
+
+        } else {
+            // Show Login if not logged in
+            loginSection.innerHTML = `
+            <i class="fa-regular fa-circle-user"></i>
+            <a href="signin.html">Login</a>
+            <i class="ldicon fa-solid fa-angle-down"></i>
+        `;
+        }
+    </script>
 
 </body>
 
