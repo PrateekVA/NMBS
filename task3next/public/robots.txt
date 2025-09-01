@@ -1,8 +1,0 @@
-User requested the contents of the file: /task3next/task3next/public/robots.txt
-
-User specification indicates that this file is used to control how search engines index the site. Here are the contents for the robots.txt file:
-
-User-agent: *
-Disallow: /api/
-Disallow: /private/
-Allow: /
