@@ -1,0 +1,154 @@
+.signupContainer {
+  background-color: #eff0f2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.signupBox {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  min-height: 500px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.signupLeft {
+  background-color: #2874f0;
+  color: #fff;
+  padding: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.signupTitle {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.signupSubtitle {
+  font-size: 18px;
+  color: #dbdbdb;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+
+.signupImage {
+  text-align: center;
+}
+
+.signupImage img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.signupRight {
+  padding: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 15px 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.inputGroup input:focus {
+  border-bottom-color: #2874f0;
+}
+
+.terms {
+  margin-bottom: 30px;
+}
+
+.terms p {
+  font-size: 12px;
+  color: #878787;
+  line-height: 1.4;
+}
+
+.terms span {
+  color: #2874f0;
+  cursor: pointer;
+}
+
+.continueBtn {
+  background-color: #fb641b;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+}
+
+.continueBtn:hover {
+  background-color: #e55a15;
+}
+
+.signinLink {
+  text-decoration: none;
+}
+
+.existingUserBtn {
+  display: block;
+  background-color: #fff;
+  color: #2874f0;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.existingUserBtn:hover {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+  .signupBox {
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  .signupLeft,
+  .signupRight {
+    padding: 30px;
+  }
+
+  .signupTitle {
+    font-size: 24px;
+  }
+
+  .signupSubtitle {
+    font-size: 16px;
+  }
+}
